@@ -20,8 +20,8 @@ public class UserAddressAddStepsDefinition {
         driver.get("https://mystore-testlab.coderslab.pl/index.php");
 
     }
-    @When("user clicks on sign in button, inputs {string} and {string}")
-    public void userClicksOnSignInButtonInputsEmailAndPassword(String email, String password) {
+    @When("user clicks on sign in button, inputs {string} and {string} for user {string}")
+    public void userClicksOnSignInButtonInputsEmailAndPasswordForUserName(String email, String password, String name) {
 //        driver.findElement(By.xpath("//*[@id=\"_desktop_user_info\"]/div/a/span")).click();
         LoginPage loginPage = new LoginPage(driver);
         // opcja z p.o.p:
@@ -29,7 +29,7 @@ public class UserAddressAddStepsDefinition {
         startPage.signInClick();
 
         loginPage.userLogIn(email, password);
-        Assertions.assertEquals("Clark Kent", loginPage.getNameOfLoggedUser());
+        Assertions.assertEquals(name, loginPage.getNameOfLoggedUser());
     }
     @When("user clicks on my first address button")
     public void userClicksOnMyFirstAddressButton() {
